@@ -3,7 +3,7 @@
 
 int global;
 
-void pointers() {
+static void pointers() {
 	int var = 42;
 	int var2;
 	int *intp = NULL;
@@ -21,7 +21,7 @@ void pointers() {
 	printf("Value of global : %d\n", global);
 }
 
-int sum_by_value(int array[], int size) {
+static int sum_by_value(int array[], int size) {
 	int sum = 0;
 	for (int i = 0; i < size; i++)
 		sum += array[i];
@@ -29,7 +29,7 @@ int sum_by_value(int array[], int size) {
 	return sum;
 }
 
-int sum_by_reference(int *array, int size) {
+static int sum_by_reference(int *array, int size) {
 	int sum = 0;
 	for (int i = 0; i < size; i++)
 		sum += array[i];
@@ -37,7 +37,7 @@ int sum_by_reference(int *array, int size) {
 	return sum;
 }
 
-void arrays() {
+static void arrays() {
 	int myArray[4] = {10, 20, 30, 40};
 	int result_by_value = sum_by_value(myArray, 4);
 	int result_by_reference = sum_by_reference(myArray, 4);
@@ -66,12 +66,12 @@ void structs() {
 	frederic.age = 33;
 
 	printf("Person.name = %s\n", frederic.name);
-	printf("Person.name length = %d\n", strlen(frederic.name));
+	printf("Person.name length = %lu\n", strlen(frederic.name));
 	printf("Person.age = %d\n", frederic.age);
 
 	struct person *frederic_p = &frederic;
 	printf("Person.name = %s\n", frederic_p->name);
-	printf("Person.name length = %d\n", strlen(frederic_p->name));
+	printf("Person.name length = %lu\n", strlen(frederic_p->name));
 	printf("Person.age = %d\n", (*frederic_p).age);
 }
 
