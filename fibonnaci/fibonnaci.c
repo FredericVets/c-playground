@@ -24,14 +24,14 @@ static int doesAdditionOverflow(DATA_TYPE left, DATA_TYPE right) {
  Index parameter is zero based.
 */
 static DATA_TYPE fibonnaci(int index, DATA_TYPE cache[]) {
-        if (index == 0) {
+	if (index == 0) {
 		addToCache(0, 0, cache);
 
 		return 0;
 	}
         if (index == 1) {
 		addToCache(1, 1, cache);
-		
+
 		return 1;
 	}
 
