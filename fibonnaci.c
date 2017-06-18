@@ -39,7 +39,7 @@ void displayDataTypeLimits() {
 	printf("unsigned long maximum (ULONG_MAX) : %lu\n\n", ULONG_MAX);
 }
 
-int isStringNumerical(char *c) {
+static int isStringNumerical(char *c) {
 	while (*c) {
 		if (!isdigit(*c))
 			return 0; // false
@@ -50,19 +50,19 @@ int isStringNumerical(char *c) {
 	return 1; // true
 }
 
-void initializeCache(int count, DATA_TYPE cache[]) {
+static void initializeCache(int count, DATA_TYPE cache[]) {
 	for (int i=0; i < count; i++)
 		cache[i] = UNINITIALIZED;
 }
 
-void addToCache(int index, DATA_TYPE value, DATA_TYPE cache[]) {
+static void addToCache(int index, DATA_TYPE value, DATA_TYPE cache[]) {
 	if (cache[index] != UNINITIALIZED)
 		return;
 
 	cache[index] = value;
 }
 
-int doesAdditionOverflow(DATA_TYPE left, DATA_TYPE right) {
+static int doesAdditionOverflow(DATA_TYPE left, DATA_TYPE right) {
 	return left > (MAX_VALUE - right);
 }
 
