@@ -3,6 +3,7 @@
 
 static void displayDataTypeLimits() {
 	// Constants defined in limits.h
+	// (see https://en.wikipedia.org/wiki/C_data_types)
 
 	printf("(signed) char minimum (CHAR_MIN) : %hhi\n", CHAR_MIN);
 	printf("(signed) char maximum (CHAR_MAX) : %hhi\n", CHAR_MAX);
