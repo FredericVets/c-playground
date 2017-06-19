@@ -29,7 +29,7 @@ static DATA_TYPE fibonnaci(int index, DATA_TYPE cache[]) {
 
 		return 0;
 	}
-        if (index == 1) {
+	if (index == 1) {
 		addToCache(1, 1, cache);
 
 		return 1;

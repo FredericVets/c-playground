@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 int global;
 
@@ -11,9 +12,9 @@ static void pointers() {
 	intp = &var;
 	var++;
 
-	printf("Address of variable var : %x\n", &var);
-	printf("Address of variable intp: %x\n", &intp);
-	printf("Address stored in variable intp: %x\n", intp);
+	printf("Address of variable var : %p\n", &var);
+	printf("Address of variable intp: %p\n", &intp);
+	printf("Address stored in variable intp: %p\n", intp);
 
 	// Dereference the intp pointer.
 	printf("Value of dereferenced variable *intp : %d\n", *intp);
@@ -61,9 +62,7 @@ struct person {
 };
 
 void structs() {
-	struct person frederic;
-	strcpy(frederic.name, "Frederic");
-	frederic.age = 33;
+	struct person frederic = { "Frederic", 33 };
 
 	printf("Person.name = %s\n", frederic.name);
 	printf("Person.name length = %lu\n", strlen(frederic.name));
@@ -73,12 +72,39 @@ void structs() {
 	printf("Person.name = %s\n", frederic_p->name);
 	printf("Person.name length = %lu\n", strlen(frederic_p->name));
 	printf("Person.age = %d\n", (*frederic_p).age);
+
+	struct person john;
+	strcpy(john.name, "John");
+	john.age = 60;
+}
+
+static void timeTest() {
+    // Usage of time();
+    time_t now;
+    long now_ticks = time(&now);
+    printf("Seconds since Unix Epoch : %lu\n", now_ticks);
+    printf("Seconds since Unix Epoch : %lu\n", now);
+
+    printf("The current time is : %s\n", ctime(&now));
+
+    // Usage of localtime();
+    struct tm *local_now;
+    local_now = localtime(&now);
+
+    printf(
+        "Today is %d/%02d at %d:%02d:%02d\n",
+        local_now->tm_mday,
+        local_now->tm_mon + 1, // Months start at 0
+        local_now->tm_hour,
+        local_now->tm_min,
+        local_now->tm_sec);
 }
 
 int main(int argc, char **argv) {
 	pointers();
 	arrays();
 	structs();
+	timeTest();
 
 	printf("'%d' arguments are passed.\n", argc);
 
