@@ -3,7 +3,7 @@
 #include <ctype.h>
 
 static void itterate_as_pointer(char *string) {
-    // while (*string) is a shorthan for while (*string != '\0'), the null-byte.
+    // while (*string) is a shorthand for : while (*string != '\0'), the null-byte.
     while (*string) {
         putchar(*string);
         string++;
