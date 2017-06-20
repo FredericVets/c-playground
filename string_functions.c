@@ -2,59 +2,18 @@
 #include <ctype.h>
 #include <string.h>
 
-// Modifies input.
-void convert_to_upper(char *string) {
-    while (*string) {
-        *string = toupper(*string);
+char* to_upper(char *string);           // Does not modify the input.
+void convert_to_upper(char *string);    // Modifies the input.
 
-        string++;
-    }
-}
+char* encrypt(char *string);
+void convert_to_encrypted(char *string);
 
-// Does not modify input.
-char* to_upper(char *string) {
-    char *temp;
-    strcpy(temp, string);
+char *decrypt(char *string);
+void convert_to_decrypted(char *string);
 
-    convert_to_upper(temp);
+char *longest(char *left, char *right);
 
-    return temp;
-}
-
-void convert_to_encrypted(char *string) {
-    while (*string) {
-        *string = *string + 1;
-
-        string++;
-    }
-}
-
-char* encrypt(char *string) {
-    char *temp;
-    strcpy(temp, string);
-
-    convert_to_encrypted(temp);
-
-    return temp;
-}
-
-void convert_to_decrypted(char *string) {
-    while (*string) {
-        *string = *string - 1;
-
-        string++;
-    }
-}
-
-char *decrypt(char *string) {
-    char *temp;
-    strcpy(temp, string);
-
-    convert_to_decrypted(temp);
-
-    return temp;
-}
-
+// Test those functions.
 int main() {
     char string[] = "Some input string!";
 
@@ -73,5 +32,66 @@ int main() {
     printf("original bla value : %s\n", bla_ptr);
     printf("encrypted bla value : %s\n", encrypted_bla_ptr);
 
+    char *left = "In a galaxy ...";
+    char *right = "Far far away ...";
+    printf("The longest string : %s\n", longest(left, right));
+
     return 0;
+}
+
+// Does not modify input.
+char* to_upper(char *string) {
+    char *temp;
+    strcpy(temp, string);
+
+    convert_to_upper(temp);
+
+    return temp;
+}
+
+// Modifies input.
+void convert_to_upper(char *string) {
+    while (*string) {
+        *string = toupper(*string);
+
+        string++;
+    }
+}
+
+char* encrypt(char *string) {
+    char *temp;
+    strcpy(temp, string);
+
+    convert_to_encrypted(temp);
+
+    return temp;
+}
+
+void convert_to_encrypted(char *string) {
+    while (*string) {
+        *string = *string + 1;
+
+        string++;
+    }
+}
+
+char *decrypt(char *string) {
+    char *temp;
+    strcpy(temp, string);
+
+    convert_to_decrypted(temp);
+
+    return temp;
+}
+
+void convert_to_decrypted(char *string) {
+    while (*string) {
+        *string = *string - 1;
+
+        string++;
+    }
+}
+
+char *longest(char *left, char *right) {
+    return strlen(left) >= strlen(right) ? left : right;
 }
