@@ -48,6 +48,15 @@ int main() {
     // Case 2.
     char *pointer_string = "This string is assigned to a pointer.";
 
+    /*
+    arrays like array_string are NOT pointers.
+    Array objects do not store an address anywhere (which should be clear from the memory map).
+    Rather, array expressions will "decay" to pointer types unless they are operands of the unary & or sizeof operators
+    (hence the difference in behavior for sizeof)
+
+    see https://stackoverflow.com/questions/4607128/in-c-are-arrays-pointers-or-used-as-pointers/4608421#4608421
+    */
+
     printf("Address of array_string = %p\n", array_string);
     printf("strlen(array_string) = %lu\n", strlen(array_string));
     printf("sizeof array_string = %lu\n\n", sizeof array_string); // IMPORTANT !

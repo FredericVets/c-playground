@@ -2,7 +2,16 @@
 #include <ctype.h>
 #include <string.h>
 
-// Does nor modify input.
+// Modifies input.
+void convert_to_upper(char *string) {
+    while (*string) {
+        *string = toupper(*string);
+
+        string++;
+    }
+}
+
+// Does not modify input.
 char* to_upper(char *string) {
     char *temp;
     strcpy(temp, string);
@@ -12,10 +21,9 @@ char* to_upper(char *string) {
     return temp;
 }
 
-// Modifies input.
-void convert_to_upper(char *string) {
+void convert_to_encrypted(char *string) {
     while (*string) {
-        *string = toupper(*string);
+        *string = *string + 1;
 
         string++;
     }
@@ -30,9 +38,9 @@ char* encrypt(char *string) {
     return temp;
 }
 
-void convert_to_encrypted(char *string) {
+void convert_to_decrypted(char *string) {
     while (*string) {
-        *string = *string + 1;
+        *string = *string - 1;
 
         string++;
     }
@@ -45,14 +53,6 @@ char *decrypt(char *string) {
     convert_to_decrypted(temp);
 
     return temp;
-}
-
-void convert_to_decrypted(char *string) {
-    while (*string) {
-        *string = *string - 1;
-
-        string++;
-    }
 }
 
 int main() {
