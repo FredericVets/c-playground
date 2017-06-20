@@ -30,7 +30,8 @@ int main() {
     char *bla_ptr = "blaaa";
     char *encrypted_bla_ptr = encrypt(bla_ptr);
     printf("original bla value : %s\n", bla_ptr);
-    printf("encrypted bla value : %s\n", encrypted_bla_ptr);
+    printf("encrypted bla value : '%s'\n", encrypted_bla_ptr);
+
 
     char *left = "In a galaxy ...";
     char *right = "Far far away ...";
@@ -58,13 +59,19 @@ void convert_to_upper(char *string) {
     }
 }
 
+// Encrypt by replacing with next character is ascii table.
 char* encrypt(char *string) {
-    char *temp;
-    strcpy(temp, string);
+    static char output[64];
+    int index = 0;
 
-    convert_to_encrypted(temp);
+    while (*string) {
+        output[index] = *string + 1;
 
-    return temp;
+        index++;
+        string++;
+    }
+
+    return output;
 }
 
 void convert_to_encrypted(char *string) {
@@ -75,6 +82,7 @@ void convert_to_encrypted(char *string) {
     }
 }
 
+// TODO : rewrite it.
 char *decrypt(char *string) {
     char *temp;
     strcpy(temp, string);
