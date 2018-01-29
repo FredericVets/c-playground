@@ -61,6 +61,7 @@ void convert_to_upper(char *string) {
 
 // Encrypt by replacing with next character is ascii table.
 char* encrypt(char *string) {
+    // Needs to be static, otherwise it will not survive the return, and can not be read by caller.
     static char output[64];
     int index = 0;
 
