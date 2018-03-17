@@ -4,7 +4,7 @@
 
 int global;
 
-static void pointers() {
+void pointers() {
 	int var = 42;
 	int var2;
 	int *intp = NULL;
@@ -22,7 +22,7 @@ static void pointers() {
 	printf("Value of global : %d\n", global);
 }
 
-static int sum_by_value(int array[], int size) {
+int sum_by_value(int array[], int size) {
 	int sum = 0;
 	for (int i = 0; i < size; i++)
 		sum += array[i];
@@ -30,7 +30,7 @@ static int sum_by_value(int array[], int size) {
 	return sum;
 }
 
-static int sum_by_reference(int *array, int size) {
+int sum_by_reference(int *array, int size) {
 	int sum = 0;
 	for (int i = 0; i < size; i++)
 		sum += array[i];
@@ -38,7 +38,7 @@ static int sum_by_reference(int *array, int size) {
 	return sum;
 }
 
-static void arrays() {
+void arrays() {
 	int myArray[4] = {10, 20, 30, 40};
 	int result_by_value = sum_by_value(myArray, 4);
 	int result_by_reference = sum_by_reference(myArray, 4);
@@ -78,7 +78,7 @@ void structs() {
 	john.age = 60;
 }
 
-static void timeTest() {
+void timeTest() {
     // Usage of time();
     time_t now;
     long now_ticks = time(&now);
